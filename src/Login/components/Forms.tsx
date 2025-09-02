@@ -20,13 +20,13 @@ function Forms() {
         <RadioGroup onChange={setLayout} type='button' name='layout' value={layout}>
           <Radio value='horizontal'>horizontal</Radio>
           <Radio value='vertical'>vertical</Radio>
-          <Radio value='inline'>inline</Radio>
+          <Radio value='inline'>inline</Radio> 
         </RadioGroup>
       </FormItem>
-      <FormItem label='Username' field='username' tooltip={<div>Username is required </div>} rules={[{ required: true }]} className={'arco-demo-form-item-required'} style={{ columnGap: 10, flexWrap: "nowrap" }}>
+      <FormItem label='Username' field='username' tooltip={<div>Username is required </div>} rules={[{ required: true }]} className={'arco-demo-form-item-required'} style={{ columnGap: 20, flexWrap: "nowrap" }}>
         <Input style={{ width: 270 }} placeholder='please enter your name' />
       </FormItem>
-      <FormItem label='Post'  style={{ columnGap: 10, flexWrap: "nowrap" }}>
+      <FormItem label='Post'  style={{ columnGap: 20, flexWrap: "nowrap" }}>
         <Input style={{ width: 270 }} placeholder='please enter your post' />
       </FormItem>
       <FormItem

@@ -5,22 +5,31 @@ function App() {
   const [data, setData] = useState("");
   const [users, setUsers] = useState([]);
   const postData = async () => {
-    const res = await fetch("http://localhost:3000/api/users", {
+    const res = await fetch("http://localhost:3000/api/auth/LoginAuther", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: "even",
-        email: "15403287024@qq.com",
+        userName: "even1",
+        email: "15403287023@qq.com",
+        password: "123456",
       }),
     });
     const data = await res.json();
     setData(data);
   };
   const getUser = async () => {
-    const res = await fetch("http://localhost:3000/api/users", {
-      method: "get",
+    const res = await fetch("http://localhost:3000/api/auth/Register", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userName: "even1",
+        email: "15403287024@qq.com",
+        password: "123456",
+      }),
     });
     const data = await res.json();
     setUsers(data);
