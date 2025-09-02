@@ -1,9 +1,16 @@
 import { useState } from "react";
 import "../../App.css";
 import Forms from "../components/Forms";
+import { LoginApi } from "../api/loginApi";
 function App() {
   const [data, setData] = useState("");
   const [users, setUsers] = useState([]);
+  const getUser = () =>
+    LoginApi({
+      userName: "even1",
+      email: "15403287024@qq.com",
+      password: "123456",
+    });
   const postData = async () => {
     const res = await fetch("http://localhost:3000/api/auth/LoginAuther", {
       method: "post",
@@ -19,7 +26,7 @@ function App() {
     const data = await res.json();
     setData(data);
   };
-  const getUser = async () => {
+  /* const getUser = async () => {
     const res = await fetch("http://localhost:3000/api/auth/Register", {
       method: "post",
       headers: {
@@ -33,7 +40,7 @@ function App() {
     });
     const data = await res.json();
     setUsers(data);
-  };
+  }; */
   return (
     <div className="App">
       <button onClick={postData}>测试接口</button>
