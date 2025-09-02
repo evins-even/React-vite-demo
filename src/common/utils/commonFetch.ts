@@ -17,7 +17,7 @@ Mapi.addRequestInterceptor(async (config) => {
 // 添加响应拦截器 - 错误处理
 
 Mapi.addResponseInterceptor(async (response) => {
-    if (!response.ok) {
+    if (response.status !== 200) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
     return response.json();
@@ -25,21 +25,19 @@ Mapi.addResponseInterceptor(async (response) => {
 
 // 添加错误拦截器
 
-Mapi.addResponseInterceptor(async (response) => {
-    if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || '请求失败');
+Mapi.addErrorInterceptor(async (response) => {
+    if (!response.success) {
+        const error = response
+        throw new Error(error || '请求失败');
     }
     return response;
 });
 
 // 添加响应拦截器 - 解析JSON
 Mapi.addResponseInterceptor(async (response) => {
-    const contentType = response.headers.get('content-type');
-    if (contentType && contentType.includes('application/json')) {
-        const data = await response.json();
-        return data;
-    }
-    return response;
+    console.log('响应拦截器', response)
+    const data = JSON.stringify(response)
+    console.log('响应数据', data)
+    return data;
 });
 export default Mapi;

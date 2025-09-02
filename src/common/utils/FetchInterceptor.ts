@@ -19,6 +19,8 @@ type ResponseInterceptor = (
     config?: RequestConfig
 ) => Promise<any> | any;
 
+
+
 // 错误拦截器类型
 type ErrorInterceptor = (
     error: any,
@@ -71,7 +73,7 @@ export class FetchInterceptor {
 
         try {
             let processedConfig = { ...config };
-
+            console.log('请求拦截器', processedConfig)
             delete processedConfig.params;
             // 执行请求拦截器
             for (const interceptor of this.requestInterceptors) {
@@ -81,7 +83,7 @@ export class FetchInterceptor {
             const response = await fetch(finalUrl, processedConfig);
 
             // 执行响应拦截器
-            let processedResponse = response;
+            let processedResponse = response
             for (const interceptor of this.responseInterceptors) {
                 processedResponse = await interceptor(processedResponse, processedConfig);
             }
