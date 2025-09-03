@@ -1,4 +1,5 @@
 // 策略执行器类
+import { is } from './../../../node_modules/immer/src/utils/common';
 export class StrategyExecutor {
   private strategies: Record<string, (data: any) => any> = {};
 
@@ -33,9 +34,9 @@ export class StrategyExecutor {
 
 // 默认策略
 const defaultStrategies = {
-  add: (data: { a: number; b: number }) => data.a + data.b,
-  multiply: (data: { a: number; b: number }) => data.a * data.b,
-  subtract: (data: { a: number; b: number }) => data.a - data.b,
+  isObject: (data: any): boolean => Object.prototype.toString.call(data) === "[object Object]",
+  isArray: (data: any): boolean => Object.prototype.toString.call(data) === '[object Array]',
+  isString: (data: any): boolean => Object.prototype.toString.call(data) === '[object String]',
   compare: (data: { a: string; b: string }) => data.a === data.b,
   divide: (data: { a: number; b: number }) => {
     if (data.b === 0) throw new Error("Division by zero");

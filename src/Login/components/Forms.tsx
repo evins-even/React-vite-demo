@@ -4,10 +4,11 @@ import "../style/LoginStyle.css"
 import { useLogin } from '../hooks/useLogin';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
+export type LayoutType = "horizontal" | "inline" | "vertical";
+
 
 function Forms() {
-  const [layout, setLayout] = useState<"horizontal" | "inline" | "vertical">('horizontal');
-  const [userName, setUserName] = useState("")
+  const [layout, setLayout] = useState<LayoutType>('horizontal');
   const [form] = Form.useForm<{ email: string, password: string }>();
   const FormUtils = useLogin()
 
@@ -17,16 +18,14 @@ function Forms() {
       style={
         layout === 'inline'
           ? { width: '100%' }
-          : { maxWidth: 900 }
+          : { maxWidth: 1200 }
       }
       autoComplete='off'
       layout={layout}
       onValuesChange={(value, vas) => {
         //两个参数，第一个是当前变化的值， 第二个是所有值
-        console.log(value, vas)
       }}
       onSubmit={(value) => {
-        console.log(value)
         FormUtils.login(value)
       }}
     >
@@ -37,20 +36,16 @@ function Forms() {
           <Radio value='inline'>inline</Radio>
         </RadioGroup>
       </FormItem>
-      <FormItem label='email' field='email' tooltip={<div>Username is required </div>} rules={[{ required: true }]} className={'arco-demo-form-item-required'} style={{ columnGap: 20, flexWrap: "nowrap" }}>
+      <FormItem label='email' field='email' tooltip={<div>Username is required </div>} rules={[{ required: true }]} className={'arco-demo-form-item-required'} >
         <Input style={{ width: 270 }} placeholder='please enter your name' />
       </FormItem>
-      <FormItem label='PassWord' field="password" style={{ columnGap: 20, flexWrap: "nowrap" }} rules={[{ required: true, message: 'Password is required', maxLength: 12, }]} className={'arco-demo-form-item-required'}>
+      <FormItem label='PassWord' field="password" rules={[{ required: true, message: 'Password is required', maxLength: 12, }]} className={'arco-demo-form-item-required'}>
         <Input style={{ width: 270 }} placeholder='please enter your post' type='password' />
       </FormItem>
       <FormItem
-        wrapperCol={
-          layout === 'horizontal'
-            ? {
-              offset: 5,
-            }
-            : {}
-        }
+        label='Agree'
+        field="agree"
+        rules={[{ required: true, message: 'Please agree to the terms of service', }]}
       >
         <Checkbox>I have read the manual</Checkbox>
       </FormItem>
