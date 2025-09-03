@@ -1,3 +1,13 @@
+.LoginContainer {
+  display: flex;
+  flex-direction: row;
+}
+
 .arco-demo-form-item-required > div > label {
   white-space: nowrap;
+}
+
+div.arco-demo-form-item-required {
+  flex-flow: row nowrap;
+  column-gap: 20px;
 }
