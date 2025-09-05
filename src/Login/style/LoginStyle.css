@@ -1,6 +1,8 @@
 .LoginContainer {
   display: flex;
   flex-direction: row;
+  border: 1px solid black;
+  width: 100%;
 }
 
 .arco-demo-form-item-required > div > label {

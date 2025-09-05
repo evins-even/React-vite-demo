@@ -1,4 +1,4 @@
-import { FetchInterceptor } from "../utils/FetchInterceptor";
+import { FetchInterceptor } from "../api/FetchInterceptor";
 
 const Mapi = new FetchInterceptor("http://localhost:3000/api")
 

@@ -7,8 +7,7 @@ function LoginPage() {
     return (
         <div className="LoginContainer">
             <p>这里是登录页</p>
-           {/*  <LoginBoard></LoginBoard>
-            <Forms></Forms> */}
+            <Forms></Forms>
         </div>
     );
 }

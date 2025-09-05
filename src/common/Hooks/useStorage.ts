@@ -10,7 +10,7 @@ function useStorage(key: string, defaultValue?: string): [string | undefined, (s
     const [storedValue, setStoredValue] = useState(
         localStorage.getItem(key) || defaultValue
     );
-    
+
     const setStorageValue = (value: string) => {
         localStorage.setItem(key, value);
         if (value !== storedValue) {
