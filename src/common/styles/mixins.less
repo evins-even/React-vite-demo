@@ -1,0 +1,44 @@
+// src/styles/mixins.less
+@base-font-size: 16;
+
+// 单参数版本
+.rem(@property, @value) {
+  @{property}: (@value / @base-font-size * 1rem);
+}
+
+// 两个值：垂直 水平
+.rem(@property, @vertical, @horizontal) {
+  @{property}: (@vertical / @base-font-size * 1rem)
+    (@horizontal / @base-font-size * 1rem);
+}
+
+// 四个值：上 右 下 左
+.rem(@property, @top, @right, @bottom, @left) {
+  @{property}: (@top / @base-font-size * 1rem) (@right / @base-font-size * 1rem)
+    (@bottom / @base-font-size * 1rem) (@left / @base-font-size * 1rem);
+}
+// 直接转换函数
+.px2rem(@px) {
+  @return: @px / @base-font-size * 1rem;
+}
+
+// 响应式媒体查询 mixin
+.respond-to(@breakpoint, @rules) {
+  @media (min-width: @breakpoint) {
+    @rules();
+  }
+}
+
+// 暗色主题 mixin
+.dark-theme(@rules) {
+  [data-theme="dark"] & {
+    @rules();
+  }
+}
+
+// 亮色主题 mixin
+.light-theme(@rules) {
+  [data-theme="light"] & {
+    @rules();
+  }
+}

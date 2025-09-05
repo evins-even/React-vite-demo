@@ -1,0 +1,117 @@
+@import "./common/styles/variables.less";
+@import "./common/styles/mixins.less";
+
+// 根元素变量定义
+:root {
+  font-family: @font-family;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+// 添加暗色/亮色主题变量
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #213547;
+  --primary-color: #646cff;
+  --border-color: #eaeaea;
+}
+
+[data-theme="dark"] {
+  --bg-color: #242424;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --primary-color: #535bf2;
+  --border-color: #333;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  max-width: 1080px;
+  margin: 0 auto;
+  .rem(padding, 32); // 使用您的 mixin 转换 2rem → 32px
+  .rem(margin,32);
+  text-align: center;
+  width: 100%;
+}
+
+// 响应式调整
+@media (max-width: @breakpoint-md) {
+  #root {
+    .rem(padding, 16);
+  }
+
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: @breakpoint-sm) {
+  #root {
+    .rem(padding, 12);
+  }
+
+  body {
+    min-width: 280px;
+  }
+}
+
+// 添加一些实用类
+.text-primary {
+  color: var(--primary-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+// 确保链接样式一致
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// 按钮基础样式
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  .rem(padding, 8, 16);
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  &:hover {
+    border-color: var(--primary-color);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
