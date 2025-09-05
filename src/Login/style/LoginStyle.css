@@ -13,3 +13,8 @@ div.arco-demo-form-item-required {
   flex-flow: row nowrap;
   column-gap: 20px;
 }
+.banner {
+  flex: 1;
+  border: 1px solid black;
+  width: 50%;
+}

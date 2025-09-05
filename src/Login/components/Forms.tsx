@@ -18,7 +18,7 @@ function Forms() {
       style={
         layout === 'inline'
           ? { width: '100%' }
-          : { maxWidth: 1200 }
+          : { maxWidth: "50%" }
       }
       autoComplete='off'
       layout={layout}
