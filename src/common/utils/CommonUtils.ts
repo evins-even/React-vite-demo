@@ -1,5 +1,4 @@
 // 策略执行器类
-import { is } from './../../../node_modules/immer/src/utils/common';
 export class StrategyExecutor {
   private strategies: Record<string, (data: any) => any> = {};
 
