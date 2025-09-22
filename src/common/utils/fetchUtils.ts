@@ -54,7 +54,7 @@ function retryPromise<T>(fn: (...args: any[]) => Promise<T>, baseDelay: number =
     发起所有请求，而不是进行 执行-》等待-》再次请求-》等待 的循环。而使用递归更能体现这个过程，并且天然的形成了一个异步链。
     当然，我们可以使用for循环配合async/await 实现这一目的。下面我给出js简单回答：
 */
-function retryWithLoop(fn, maxRetries = 3, delay = 1000) {
+/* function retryWithLoop(fn, maxRetries = 3, delay = 1000) {
     // 返回一个可以接收参数的函数
     return async function (...args) {
         let lastError;
@@ -71,3 +71,4 @@ function retryWithLoop(fn, maxRetries = 3, delay = 1000) {
         throw lastError;
     };
 }
+ */

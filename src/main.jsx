@@ -22,7 +22,7 @@ function Index() {
     setLang,
     theme,
     setTheme,
-  };  
+  };
   React.useEffect(() => {
     document.body.setAttribute("data-theme", theme);
   }, [theme]);
