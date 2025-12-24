@@ -1,4 +1,4 @@
-import { StrategyExecutor } from "../../common/utils/CommonUtils";
+import { StrategyExecutor } from "../../../common/utils/CommonUtils";
 import { LoginApi } from "../api/loginApi";
 
 export function useLogin() {
@@ -8,8 +8,8 @@ export function useLogin() {
         return LoginStrategy.execute("compare", data);
     }
     //登录方法：需要校验通过
-    function login(data: { email: string, password: string }): Promise<any> {
-        return LoginApi(data)
+    async function login(data: { email: string, password: string }): Promise<any> {
+        return await LoginApi(data)
     }
 
     return {

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit/react";
+import { createSlice, createStore } from "@reduxjs/toolkit/react";
 
 interface ConfigState {
     settings?: {
@@ -36,6 +36,14 @@ export const configSlice = createSlice({
         },
     },
 });
+function reducer(state, action) {
+    console.log('reducer', state, action);
+    return state;
+}
+
+const store = createStore(reducer);
+console.log(store)
+
 
 export const { setSettings, setUserInfo } = configSlice.actions;
 export default configSlice.reducer;

@@ -59,7 +59,7 @@ function Forms() {
         }
       >
         <Button type='primary' htmlType='submit'>
-          Submit
+          Login
         </Button>
       </FormItem>
     </Form>

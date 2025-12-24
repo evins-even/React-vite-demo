@@ -8,7 +8,7 @@ function setRootFontSize() {
     const newSize = baseSize * scale;
 
     // 限制最小和最大值
-    const finalSize = Math.min(Math.max(newSize, 12), 20);
+    const finalSize = Math.min(Math.max(newSize, 6), 20);
 
     document.documentElement.style.fontSize = finalSize + 'px';
     console.log('当前根字体大小：', finalSize)
