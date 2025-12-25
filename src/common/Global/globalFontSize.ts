@@ -1,3 +1,4 @@
+import debounce from 'lodash/debounce';
 function setRootFontSize() {
     const screenWidth = window.innerWidth;
     const baseSize = 16; // 基准字体大小
@@ -18,4 +19,4 @@ function setRootFontSize() {
 setRootFontSize();
 
 // 监听窗口大小变化
-window.addEventListener('resize', setRootFontSize);
+window.addEventListener('resize', debounce(setRootFontSize, 300));

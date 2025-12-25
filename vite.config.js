@@ -1,11 +1,63 @@
-// 将原来的 require() 语法改为 import
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { visualizer } from 'rollup-plugin-visualizer'
+import AutoImport from 'unplugin-auto-import/vite'
+import { vitePluginForArco } from '@arco-plugins/vite-react'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // 自动导入 React hooks 等
+    AutoImport({
+      imports: ['react', 'react-router-dom'],
+      dts: true,
+    }),
+    vitePluginForArco(),
+    visualizer({
+      filename: 'dist/stats.html',
+      open: true,
+    })
+  ],
   server: {
     port: 3001,
     open: true
+  },
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // 基础框架
+          'react-vendor': ['react', 'react-dom'],
+          // 路由相关
+          'router': ['react-router-dom'],
+          // 状态管理
+          'redux': ['react-redux'],
+          // UI 组件库
+          'arco-design': ['@arco-design/web-react'],
+        },
+        // 优化 chunk 文件名
+        chunkFileNames: 'assets/chunk-[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.')
+          const extType = info[info.length - 1]
+
+          // 根据文件类型分类存放
+          if (/png|jpe?g|svg|gif|webp|ico/i.test(extType)) {
+            return `assets/images/[name]-[hash][extname]`
+          }
+
+          if (/woff2?|eot|ttf|otf/i.test(extType)) {
+            return `assets/fonts/[name]-[hash][extname]`
+          }
+
+          // 其他文件使用默认路径
+          return `assets/[name]-[hash][extname]`
+        },
+      }
+    },
+    minify: 'esbuild',
+    reportCompressedSize: true,
   }
 })

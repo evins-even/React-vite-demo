@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
-import { Form, Input, Checkbox, Button, Radio } from '@arco-design/web-react';
+import { useState } from 'react';
+import Form from "@arco-design/web-react/es/Form"
+import Input from "@arco-design/web-react/es/Input"
+import Checkbox from "@arco-design/web-react/es/Checkbox"
+import Button from "@arco-design/web-react/es/Button"
+import Radio from "@arco-design/web-react/es/Radio"
+
 import "../style/LoginStyle.css"
 import { useLogin } from '../hooks/useLogin';
 const FormItem = Form.Item;
