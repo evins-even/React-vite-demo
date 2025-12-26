@@ -5,7 +5,7 @@ import Checkbox from "@arco-design/web-react/es/Checkbox"
 import Button from "@arco-design/web-react/es/Button"
 import Radio from "@arco-design/web-react/es/Radio"
 
-import "../style/LoginStyle.css"
+import "../style/loginStyle."
 import { useLogin } from '../hooks/useLogin';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;

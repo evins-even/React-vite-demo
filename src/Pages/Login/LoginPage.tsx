@@ -1,10 +1,11 @@
-import "./style/LoginStyle.css"
+import "./style/loginStyle.less"
 import Forms from "./components/Forms";
+
 function LoginPage() {
 
     return (
         <div className="LoginContainer">
-            <div className="banner"><p>这里是登录页</p></div>
+            <image className="banner" ></image>
             <Forms></Forms>
         </div>
     );

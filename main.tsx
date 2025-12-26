@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./src/App";
 import zhCN from "@arco-design/web-react/es/locale/zh-CN";
 import enUS from "@arco-design/web-react/es/locale/en-US";
 import { ConfigProvider } from "@arco-design/web-react";
 import "@arco-design/web-react/dist/css/arco.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./common/Global/redux";
-import useStorage from "./common/Hooks/useStorage";
-import { GlobalContext } from "./common/Global/context";
-import "./common/Global/globalFontSize";
-import "./global.less";
-import LoginPage from "./Pages/Login/LoginPage";
+import store from "./src/common/Global/redux";
+import useStorage from "./src/common/Hooks/useStorage";
+import { GlobalContext } from "./src/common/Global/context";
+import "./src/common/Global/globalFontSize";
+import "./src/common/styles/global.less";
+import LoginPage from "./src/Pages/Login/LoginPage";
 function Index() {
   // 从持久化中获取 语言选项
   const [lang, setLang] = useStorage("arco-lang", "en-US");
@@ -24,7 +24,7 @@ function Index() {
     setTheme,
   };
   React.useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-theme", theme ?? "light");
   }, [theme]);
   // 根据语言选项选择语言包
   const getArcoLocale = () => {
@@ -59,4 +59,10 @@ function Index() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<Index />);
+const container = document.getElementById("root");
+if (container) {
+  ReactDOM.createRoot(container).render(<Index />);
+} else {
+  throw new Error("no root element")
+}
+

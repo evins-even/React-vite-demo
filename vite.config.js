@@ -39,22 +39,6 @@ export default defineConfig({
         // 优化 chunk 文件名
         chunkFileNames: 'assets/chunk-[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.')
-          const extType = info[info.length - 1]
-
-          // 根据文件类型分类存放
-          if (/png|jpe?g|svg|gif|webp|ico/i.test(extType)) {
-            return `assets/images/[name]-[hash][extname]`
-          }
-
-          if (/woff2?|eot|ttf|otf/i.test(extType)) {
-            return `assets/fonts/[name]-[hash][extname]`
-          }
-
-          // 其他文件使用默认路径
-          return `assets/[name]-[hash][extname]`
-        },
       }
     },
     minify: 'esbuild',

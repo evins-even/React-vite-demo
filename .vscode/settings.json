@@ -1,0 +1,28 @@
+{
+  // 禁止在搜索结果中显示 dist 文件
+  "search.exclude": {
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true
+  },
+  
+  // 禁止在文件浏览器中显示
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
+  },
+  
+  // 禁止在快速打开中显示
+  "files.watcherExclude": {
+    "**/dist/assets": true,
+    "**/node_modules/**": true,
+    "**/.git/**": true
+  },
+  
+  // 针对 TypeScript 的额外配置
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  
+}

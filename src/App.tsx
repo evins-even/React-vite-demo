@@ -7,11 +7,11 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => {}}>
+      <button onClick={() => { }}>
         <Link to="/login">跳转到登录页</Link>
       </button>
       <p>{JSON.stringify(data)}</p>
-      <button onClick={() => {}}>获取全部用户信息</button>
+      <button onClick={() => { }}>获取全部用户信息</button>
       <p>{users}</p>
     </div>
   );
