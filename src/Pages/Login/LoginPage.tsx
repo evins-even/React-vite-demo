@@ -1,11 +1,11 @@
 import "./style/loginStyle.less"
 import Forms from "./components/Forms";
-
+import frogImage from "../../assets/images/frog.jpg"
 function LoginPage() {
 
     return (
         <div className="LoginContainer">
-            <image className="banner" ></image>
+            <img src={frogImage} alt="Banner" className="banner" />
             <Forms></Forms>
         </div>
     );

@@ -37,6 +37,12 @@ function Index() {
         return zhCN;
     }
   };
+  // 设置默认路由
+  useEffect(() => {
+    // TODO:判断用户是否登录
+    console.log("window.location.pathname", window.location.pathname, window.location.pathname.slice(1));
+    if (window.location.pathname.slice(1) !== 'login') window.location.pathname = "/login";
+  }, []);
   return (
     /* router-dom 路由组件最外层包裹组件 */
     <BrowserRouter>

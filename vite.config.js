@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
 import { vitePluginForArco } from '@arco-plugins/vite-react'
+import px2rem from 'postcss-pxtorem'
+import autoprefixer from 'autoprefixer'
 
 export default defineConfig({
   plugins: [
@@ -12,12 +14,22 @@ export default defineConfig({
       imports: ['react', 'react-router-dom'],
       dts: true,
     }),
-    vitePluginForArco(),
+    vitePluginForArco({
+      style: true,
+    }),
     visualizer({
       filename: 'dist/stats.html',
       open: true,
-    })
+    }),
   ],
+  css: {
+    postcss: {
+      plugins: [
+        autoprefixer(),
+        px2rem({ rootValue: 10, exclude: /node_modules/i, propList: ['*'] })
+      ],
+    },
+  },
   server: {
     port: 3001,
     open: true

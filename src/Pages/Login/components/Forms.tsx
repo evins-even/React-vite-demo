@@ -4,8 +4,7 @@ import Input from "@arco-design/web-react/es/Input"
 import Checkbox from "@arco-design/web-react/es/Checkbox"
 import Button from "@arco-design/web-react/es/Button"
 import Radio from "@arco-design/web-react/es/Radio"
-
-import "../style/loginStyle."
+import "../style/loginStyle.less"
 import { useLogin } from '../hooks/useLogin';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
@@ -20,11 +19,14 @@ function Forms() {
   return (
     <Form
       form={form}
-      style={
-        layout === 'inline'
+      style={{
+        ...(layout === 'inline'
           ? { width: '100%' }
-          : { maxWidth: "50%" }
-      }
+          : { maxWidth: "50%" }),
+        ...{
+          border: '1px solid black'
+        }
+      }}
       autoComplete='off'
       layout={layout}
       onValuesChange={(value, vas) => {
