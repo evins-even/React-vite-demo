@@ -1,0 +1,141 @@
+/**
+ * 响应式 rem 使用示例
+ * 
+ * 配置：rootValue = 100, designWidth = 1920
+ * 转换规则：px / 100 = rem
+ */
+
+/* ==================== 示例 1：全屏布局 ==================== */
+.full-screen-container {
+  width: 1920px;      /* 转换为 19.2rem，始终占满设计稿宽度 */
+  height: 1080px;     /* 转换为 10.8rem */
+  padding: 40px;      /* 转换为 0.4rem，响应式内边距 */
+}
+
+/* ==================== 示例 2：卡片组件 ==================== */
+.card {
+  width: 400px;       /* 转换为 4rem */
+  height: 300px;      /* 转换为 3rem */
+  padding: 20px;      /* 转换为 0.2rem */
+  margin: 16px;       /* 转换为 0.16rem */
+  border-radius: 8px; /* 转换为 0.08rem */
+}
+
+.card-title {
+  font-size: 24px;    /* 转换为 0.24rem，响应式字体 */
+  line-height: 32px;  /* 转换为 0.32rem */
+  margin-bottom: 12px;/* 转换为 0.12rem */
+}
+
+.card-content {
+  font-size: 16px;    /* 转换为 0.16rem */
+  line-height: 24px;  /* 转换为 0.24rem */
+}
+
+/* ==================== 示例 3：固定大小（不响应式） ==================== */
+.fixed-border {
+  /* 使用大写 PX 不会被转换 */
+  border: 1PX solid #ccc;
+  box-shadow: 0 2PX 4PX rgba(0, 0, 0, 0.1);
+}
+
+.fixed-icon {
+  /* 小图标保持固定大小 */
+  width: 16PX;
+  height: 16PX;
+}
+
+/* ==================== 示例 4：响应式网格 ==================== */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 400px); /* 每列 4rem */
+  gap: 20px;                               /* 间距 0.2rem */
+  padding: 40px;                           /* 内边距 0.4rem */
+}
+
+/* ==================== 示例 5：针对不同设备的特殊样式 ==================== */
+
+/* 移动端 (0-767px) */
+html[data-device="mobile"] .responsive-text {
+  font-size: 14px;    /* 移动端较小字体 */
+  padding: 10px;
+}
+
+/* 平板 (768-1023px) */
+html[data-device="tablet"] .responsive-text {
+  font-size: 16px;
+  padding: 15px;
+}
+
+/* PC 端 (1024-1919px) */
+html[data-device="desktop"] .responsive-text {
+  font-size: 18px;
+  padding: 20px;
+}
+
+/* 宽屏 (1920px+) */
+html[data-device="wide"] .responsive-text {
+  font-size: 20px;
+  padding: 24px;
+}
+
+/* ==================== 示例 6：混合使用 ==================== */
+.button {
+  /* 响应式宽高 */
+  width: 200px;       /* 2rem */
+  height: 48px;       /* 0.48rem */
+  
+  /* 响应式内边距 */
+  padding: 12px 24px; /* 0.12rem 0.24rem */
+  
+  /* 固定边框 */
+  border: 1PX solid #1890ff;
+  
+  /* 响应式圆角 */
+  border-radius: 4px; /* 0.04rem */
+  
+  /* 响应式字体 */
+  font-size: 16px;    /* 0.16rem */
+}
+
+/* ==================== 示例 7：复杂布局 ==================== */
+.dashboard {
+  width: 1920px;
+  height: 1080px;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 240px;       /* 2.4rem，侧边栏宽度 */
+  height: 100%;
+  padding: 16px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.header {
+  height: 64px;       /* 0.64rem，顶部栏高度 */
+  padding: 0 24px;
+  line-height: 64px;
+}
+
+/* ==================== 实际效果对照 ==================== */
+/**
+ * 屏幕宽度 1920px（根字体 100px）：
+ * - .card width: 400px → 4rem → 4 * 100 = 400px ✓
+ * - .card-title font-size: 24px → 0.24rem → 0.24 * 100 = 24px ✓
+ * 
+ * 屏幕宽度 960px（根字体 50px）：
+ * - .card width: 400px → 4rem → 4 * 50 = 200px ✓ (缩小一半)
+ * - .card-title font-size: 24px → 0.24rem → 0.24 * 50 = 12px ✓ (缩小一半)
+ * 
+ * 屏幕宽度 1440px（根字体 75px）：
+ * - .card width: 400px → 4rem → 4 * 75 = 300px ✓ (缩小 0.75)
+ * - .card-title font-size: 24px → 0.24rem → 0.24 * 75 = 18px ✓ (缩小 0.75)
+ */
+

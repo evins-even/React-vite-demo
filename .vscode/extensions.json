@@ -1,0 +1,25 @@
+{
+  "recommendations": [
+    // React 开发
+    "dsznajder.es7-react-js-snippets",
+    
+    // TypeScript
+    "ms-vscode.vscode-typescript-next",
+    
+    // ESLint
+    "dbaeumer.vscode-eslint",
+    
+    // Prettier
+    "esbenp.prettier-vscode",
+    
+    // Less 语法高亮（不编译）
+    "mrmlnc.vscode-less"
+  ],
+  "unwantedRecommendations": [
+    // 不推荐安装这些会自动编译 Less 的插件
+    "mrcrowl.easy-less",
+    "glenn2223.live-sass",
+    "ritwickdey.live-sass"
+  ]
+}
+

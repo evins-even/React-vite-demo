@@ -1,0 +1,373 @@
+/**
+ * 响应式测试页面样式
+ * 所有的 px 都会自动转换为 rem（除了大写 PX）
+ */
+
+.responsive-test-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+
+  /* 信息面板 */
+  .info-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    .title {
+      font-size: 32px;
+      margin: 0 0 20px 0;
+      color: #667eea;
+      text-align: center;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+
+      .info-item {
+        padding: 15px;
+        background: #f5f7fa;
+        border-radius: 8px;
+        border-left: 4px solid #667eea; // 固定 4px 边框
+
+        .label {
+          font-size: 14px;
+          color: #666;
+          display: block;
+          margin-bottom: 8px;
+        }
+
+        .value {
+          font-size: 24px;
+          font-weight: bold;
+          color: #667eea;
+        }
+      }
+    }
+  }
+
+  /* 测试区域 */
+  .test-section {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    .section-title {
+      font-size: 28px;
+      margin: 0 0 30px 0;
+      color: #667eea;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 15px;
+    }
+
+    .test-group {
+      margin-bottom: 40px;
+
+      h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      /* 基础盒子样式 */
+      .box {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 8px;
+        margin: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .small-text {
+          font-size: 12px;
+          margin-top: 8px;
+          opacity: 0.9;
+        }
+      }
+
+      /* 不同尺寸的盒子 */
+      .box-100 {
+        width: 100px;
+        height: 100px;
+      }
+
+      .box-200 {
+        width: 200px;
+        height: 200px;
+      }
+
+      .box-300 {
+        width: 300px;
+        height: 200px;
+      }
+
+      .box-400 {
+        width: 400px;
+        height: 200px;
+      }
+
+      .box-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      /* 固定大小盒子 */
+      .fixed-box {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 200px; // 固定宽度
+        height: 200px; // 固定高度
+        background: #10b981;
+        color: white;
+        border-radius: 8px; // 固定圆角
+        font-size: 16px; // 固定字体
+        font-weight: bold;
+        box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+
+        .small-text {
+          font-size: 12px;
+          margin-top: 8px;
+          opacity: 0.9;
+        }
+      }
+
+      /* 混合使用盒子 */
+      .mixed-box {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 300px; // 响应式宽度
+        height: 200px; // 响应式高度
+        background: #f59e0b;
+        color: white;
+        border: 2px solid #dc2626; // 固定边框
+        border-radius: 8px; // 响应式圆角
+        padding: 20px; // 响应式内边距
+        font-size: 16px; // 响应式字体
+        font-weight: bold;
+        box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+      }
+
+      /* 字体测试 */
+      .text-12 {
+        font-size: 12px;
+      }
+      .text-14 {
+        font-size: 14px;
+      }
+      .text-16 {
+        font-size: 16px;
+      }
+      .text-20 {
+        font-size: 20px;
+      }
+      .text-24 {
+        font-size: 24px;
+      }
+      .text-32 {
+        font-size: 32px;
+      }
+
+      /* 网格布局 */
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+
+        .grid-item {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 8px;
+          text-align: center;
+          box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+          transition: transform 0.3s;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+
+          p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+          }
+
+          .small-text {
+            font-size: 14px;
+            margin-top: 8px;
+            opacity: 0.9;
+          }
+        }
+      }
+
+      /* 卡片示例 */
+      .card-example {
+        max-width: 600px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+        .card-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+
+          .card-title {
+            margin: 0;
+            font-size: 24px;
+          }
+
+          .card-badge {
+            padding: 4px 12px;
+            background: #10b981;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+          }
+        }
+
+        .card-body {
+          padding: 24px;
+
+          .card-text {
+            margin: 0 0 16px 0;
+            font-size: 16px;
+            line-height: 24px;
+            color: #666;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        .card-footer {
+          padding: 20px;
+          background: #f5f7fa;
+          text-align: center;
+
+          .card-button {
+            width: 120px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+
+            &:hover {
+              background: #764ba2;
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* 使用说明 */
+  .usage-section {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    .section-title {
+      font-size: 28px;
+      margin: 0 0 30px 0;
+      color: #667eea;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 15px;
+    }
+
+    .usage-content {
+      .usage-item {
+        margin-bottom: 24px;
+        padding: 20px;
+        background: #f5f7fa;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        strong {
+          display: block;
+          font-size: 18px;
+          color: #667eea;
+          margin-bottom: 8px;
+        }
+
+        p {
+          margin: 8px 0;
+          font-size: 14px;
+          color: #666;
+          line-height: 1.6;
+        }
+
+        code {
+          display: block;
+          margin-top: 8px;
+          padding: 12px;
+          background: #1f2937;
+          color: #10b981;
+          border-radius: 4px;
+          font-family: "Courier New", monospace;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+/* 针对不同设备的特殊样式 */
+html[data-device="mobile"] .responsive-test-page {
+  padding: 20px;
+
+  .info-panel,
+  .test-section,
+  .usage-section {
+    padding: 20px;
+  }
+}
+
+html[data-device="wide"] .responsive-test-page {
+  max-width: 1920px;
+  margin: 0 auto;
+}

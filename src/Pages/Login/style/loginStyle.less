@@ -1,11 +1,35 @@
+@import "../../../common/styles/variables.less";
+
 .LoginContainer {
-  display: flex;
+  display: grid;
   flex-direction: row;
   border: 1px solid black;
-  flex: 1;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
 }
 
-.banner {
-  width: 200px;
-  height: 200px;
+.bannerImgFrog {
+  width: 100%;
+  height: 100%;
+}
+.Input {
+  width: 80%;
+}
+.FormItem {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.arco-form-label-item > label {
+  white-space: nowrap;
+}
+
+@media (max-width: @breakpoint-sm) {
+  .LoginContainer {
+    grid-template-rows: 10% 1fr 0.5fr;
+    grid-template-columns: 1fr;
+    height: 100vh; /* 使用视口高度而不是百分比 */
+    overflow-y: auto; /* 允许内容滚动 */
+  }
 }

@@ -1,0 +1,159 @@
+/**
+ * 响应式配置切换器样式
+ */
+
+.config-switcher-fab {
+  position: fixed;
+  bottom: 30PX; // 固定位置
+  right: 30PX; // 固定位置
+  width: 60PX; // 固定大小
+  height: 60PX; // 固定大小
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28PX;
+  cursor: pointer;
+  box-shadow: 0 4PX 20PX rgba(102, 126, 234, 0.4);
+  transition: all 0.3s;
+  z-index: 9999;
+
+  &:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 6PX 30PX rgba(102, 126, 234, 0.6);
+  }
+}
+
+.config-switcher-panel {
+  position: fixed;
+  top: 50%;
+  right: 30PX; // 固定位置
+  transform: translateY(-50%);
+  width: 400PX; // 固定宽度
+  max-height: 90vh;
+  background: white;
+  border-radius: 12PX;
+  box-shadow: 0 8PX 40PX rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out;
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-50%) translateX(100PX);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20PX;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+
+    h3 {
+      margin: 0;
+      font-size: 20PX;
+    }
+
+    .close-btn {
+      width: 30PX;
+      height: 30PX;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 20PX;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .panel-body {
+    max-height: calc(90vh - 60PX);
+    overflow-y: auto;
+    padding: 20PX;
+
+    .config-section {
+      margin-bottom: 24PX;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      h4 {
+        margin: 0 0 12PX 0;
+        font-size: 16PX;
+        color: #667eea;
+        border-bottom: 1PX solid #e5e7eb;
+        padding-bottom: 8PX;
+      }
+
+      .preset-buttons {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .config-item {
+        margin-bottom: 16PX;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 8PX;
+          font-size: 14PX;
+          color: #666;
+        }
+      }
+
+      .config-note {
+        padding: 12PX;
+        background: #fef3c7;
+        border-left: 4PX solid #f59e0b;
+        border-radius: 4PX;
+
+        p {
+          margin: 0 0 8PX 0;
+          font-size: 14PX;
+          font-weight: bold;
+          color: #92400e;
+        }
+
+        ul {
+          margin: 0;
+          padding-left: 20PX;
+
+          li {
+            font-size: 13PX;
+            color: #78350f;
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 移动端适配 */
+@media (max-width: 768PX) {
+  .config-switcher-panel {
+    width: calc(100vw - 40PX);
+    right: 20PX;
+  }
+}
+

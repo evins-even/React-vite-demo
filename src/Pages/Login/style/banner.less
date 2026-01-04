@@ -1,0 +1,47 @@
+.banner {
+  border: 1px solid red;
+  display: flex;
+  perspective: 1000px; // 为3D效果提供透视
+  .flip-card {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    transform-style: preserve-3d; // 保持3D空间
+    transition: transform 0.6s; // 添加过渡动画
+    cursor: pointer; // 鼠标悬停时变成手形
+    &.flipped {
+      transform: rotateY(180deg); // 翻转180度
+    }
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden; // 隐藏背面
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      &.front {
+        border: 1px solid blue;
+        background-color: aquamarine;
+      }
+      &.back {
+        border: 1px solid green;
+        background-color: lightcoral;
+        transform: rotateY(180deg); // 背面初始旋转180度
+      }
+      .card-face-title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .card-face-content {
+        font-size: 16px;
+        color: #333;
+      }
+    }
+  }
+}

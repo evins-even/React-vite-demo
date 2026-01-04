@@ -6,3 +6,20 @@ dist/
 .DS_Store
 *.zip
 *.log
+
+# 忽略自动生成的 CSS 文件（我们使用 Less，由 Vite 编译）
+src/**/*.css
+src/**/*.css.map
+!src/**/global.css
+
+# IDE 配置
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# 临时文件
+*.swp
+*.swo
+*~
+.DS_Store

@@ -17,9 +17,16 @@
   @{property}: (@top / @base-font-size * 1rem) (@right / @base-font-size * 1rem)
     (@bottom / @base-font-size * 1rem) (@left / @base-font-size * 1rem);
 }
-// 直接转换函数
+// 直接转换函数（修正版）
+// 注意：Less 中函数返回值的用法有限制
+// 推荐使用 .rem() mixin 或直接写 px 让 PostCSS 转换
 .px2rem(@px) {
-  @return: @px / @base-font-size * 1rem;
+  @result: (@px / @base-font-size * 1rem);
+}
+
+// 更实用的转换 mixin
+.convert-px(@property, @px-value) {
+  @{property}: (@px-value / @base-font-size * 1rem);
 }
 
 // 响应式媒体查询 mixin

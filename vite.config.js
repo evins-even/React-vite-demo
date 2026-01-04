@@ -26,7 +26,13 @@ export default defineConfig({
     postcss: {
       plugins: [
         autoprefixer(),
-        px2rem({ rootValue: 10, exclude: /node_modules/i, propList: ['*'] })
+        px2rem({
+          rootValue: 100, // 设置为 100，方便计算和响应式缩放
+          exclude: /node_modules|global\.less/i,
+          propList: ['*'],
+          unitPrecision: 5, // 保留 5 位小数
+          minPixelValue: 1 // 小于 1px 的不转换
+        })
       ],
     },
   },

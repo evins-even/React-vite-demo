@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./src/App";
 import zhCN from "@arco-design/web-react/es/locale/zh-CN";
 import enUS from "@arco-design/web-react/es/locale/en-US";
 import { ConfigProvider } from "@arco-design/web-react";
 import "@arco-design/web-react/dist/css/arco.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./src/common/Global/redux";
-import useStorage from "./src/common/Hooks/useStorage";
-import { GlobalContext } from "./src/common/Global/context";
-import "./src/common/Global/globalFontSize";
+import store from "./src/common/config/redux";
+import useStorage from "./src/common/hooks/useStorage";
+import { GlobalContext } from "./src/common/config/context";
+import "./src/common/config/globalFontSize";
 import "./src/common/styles/global.less";
-import LoginPage from "./src/Pages/Login/LoginPage";
+import LoginPage from "./src/pages/Login/LoginPage";
+import ResponsiveTest from "./src/pages/ResponsiveTest/ResponsiveTest";
 function Index() {
   // 从持久化中获取 语言选项
   const [lang, setLang] = useStorage("arco-lang", "en-US");
@@ -55,7 +55,7 @@ function Index() {
             <GlobalContext.Provider value={contextValue}>
               <Routes>
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/" element={<App />} />
+                <Route path="/example" element={<ResponsiveTest />} />
               </Routes>
             </GlobalContext.Provider>
           </Provider>

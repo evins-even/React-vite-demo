@@ -20,11 +20,9 @@ function Forms() {
     <Form
       form={form}
       style={{
-        ...(layout === 'inline'
-          ? { width: '100%' }
-          : { maxWidth: "50%" }),
         ...{
-          border: '1px solid black'
+          border: '1px solid black',
+          width: '100%',
         }
       }}
       autoComplete='off'
@@ -43,11 +41,11 @@ function Forms() {
           <Radio value='inline'>inline</Radio>
         </RadioGroup>
       </FormItem>
-      <FormItem label='email' field='email' tooltip={<div>Username is required </div>} rules={[{ required: true }]} className={'arco-demo-form-item-required'} >
-        <Input style={{ width: 270 }} placeholder='please enter your name' />
+      <FormItem label='userName' field='userName' tooltip={<div>Username is required </div>} rules={[{ required: true }]} className={'FormItem'} >
+        <Input className="Input" placeholder='please enter your name' />
       </FormItem>
       <FormItem label='PassWord' field="password" rules={[{ required: true, message: 'Password is required', maxLength: 12, }]} className={'arco-demo-form-item-required'}>
-        <Input style={{ width: 270 }} placeholder='please enter your post' type='password' />
+        <Input className="Input" placeholder='please enter your post' type='password' />
       </FormItem>
       <FormItem
         label='Agree'
