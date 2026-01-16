@@ -38,7 +38,18 @@ export default defineConfig({
   },
   server: {
     port: 3001,
-    open: true
+    open: true,
+    // 开发环境代理（解决跨域问题）
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        // 保持路径不变
+        // rewrite: (path) => path.replace(/^\/api/, '/api'),
+        // 如果需要 WebSocket 支持
+        // ws: true,
+      }
+    }
   },
   build: {
     outDir: 'dist',

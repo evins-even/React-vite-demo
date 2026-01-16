@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
  * @param defaultValue 默认值
  * @returns  [value, setValue, removeValue]
  */
-function useStorage(key: string, defaultValue?: string): [string | undefined, (string) => void, () => void] {
+function useStorage(key: string, defaultValue?: string): [string | undefined, (args: string) => void, () => void] {
     const [storedValue, setStoredValue] = useState(
         localStorage.getItem(key) || defaultValue
     );

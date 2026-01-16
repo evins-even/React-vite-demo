@@ -1,0 +1,276 @@
+@import "../../../../common/styles/variables.less";
+
+.FormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  // min-width: 40vw;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  .FormHeader {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+
+    .FormTitle {
+      font-size: clamp(28PX, 36px, 48px);
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .FormSubtitle {
+      font-size: clamp(14PX, 16px, 18px);
+      color: #666;
+      margin: 0;
+      font-weight: 400;
+    }
+  }
+
+  .FormBody {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .FormItem {
+    margin-bottom: 24px;
+    width: 100%;
+
+    .FormItemWrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex:1
+    }
+
+    .FormLabel {
+      font-size: clamp(14PX, 16px, 18px);
+      color: #333;
+      font-weight: 600;
+      text-align: left;
+      margin: 0;
+    }
+
+    .InputWrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .InputIcon {
+        position: absolute;
+        left: 16px;
+        font-size: clamp(16PX, 20px, 24px);
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      input {
+        width: 100%;
+        padding: 14px 16px 14px 48px;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        font-size: clamp(14PX, 16px, 18px);
+        transition: all 0.3s ease;
+        background: #fff;
+        box-sizing: border-box;
+
+        &:focus {
+          outline: none;
+          border-color: #667eea;
+          box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+          transform: translateY(-1px);
+        }
+
+        &::placeholder {
+          color: #999;
+        }
+      }
+    }
+  }
+
+  .FormOptions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: clamp(12PX, 14px, 16px);
+
+    .RememberMe {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: #666;
+
+      input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        accent-color: #667eea;
+      }
+
+      span {
+        user-select: none;
+      }
+    }
+
+    .ForgotPassword {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #764ba2;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .SubmitButton {
+    width: 100%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: clamp(16PX, 18px, 20px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+
+      &::before {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    span {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .DebugInfo {
+    margin-top: 20px;
+    padding: 12px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #666;
+    word-break: break-all;
+  }
+
+  .error-message {
+    color: #ff4d4f;
+    font-size: clamp(12PX, 14px, 16px);
+    margin-top: -16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-left: 0;
+    min-height: 20px;
+
+    &::before {
+      content: '⚠️';
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: @breakpoint-md) {
+    padding: 24px 20px;
+    margin: 10px 5px;
+    border-radius: 12px;
+    width: calc(100% - 10px);
+    max-width: calc(100vw - 20px);
+    min-width: 0;
+
+    .FormHeader {
+      margin-bottom: 32px;
+
+      .FormTitle {
+        font-size: clamp(24PX, 28px, 32px);
+      }
+
+      .FormSubtitle {
+        font-size: clamp(12PX, 14px, 16px);
+      }
+    }
+
+    .FormBody {
+      max-width: 100%;
+    }
+
+    .FormItem {
+      .FormLabel {
+        font-size: clamp(14PX, 16px, 18px);
+      }
+
+      .InputWrapper {
+        input {
+          font-size: clamp(16PX, 18px, 20px);
+          padding: 12px 16px 12px 44px;
+        }
+
+        .InputIcon {
+          left: 14px;
+          font-size: clamp(16PX, 18px, 20px);
+        }
+      }
+    }
+
+    .FormOptions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: clamp(12PX, 14px, 16px);
+    }
+
+    .error-message {
+      margin-top: -12px;
+      font-size: clamp(12PX, 14px, 16px);
+    }
+
+    .SubmitButton {
+      font-size: clamp(16PX, 18px, 20px);
+      padding: 14px 20px;
+    }
+  }
+}

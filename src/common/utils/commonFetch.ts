@@ -26,10 +26,23 @@ export class ApiError extends Error {
 }
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 获取 API 基础地址
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const getApiBaseUrl = () => {
+  // 开发环境：使用相对路径，通过 Vite 代理（解决跨域）
+  if (import.meta.env.DEV) {
+    return '/api';
+  }
+  
+  // 生产环境：从环境变量读取，或使用相对路径（通过 Nginx 代理）
+  return import.meta.env.VITE_API_BASE_URL || '/api';
+};
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 创建实例
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const api = new FetchInterceptor(
-    "http://localhost:3000/api",
+    getApiBaseUrl(),
     10000
 );
 

@@ -36,7 +36,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 1080px;
+  min-width: 100vw;
   min-height: 100vh;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -44,33 +44,8 @@ body {
 }
 
 #root {
-  margin: 0 auto;
-  .rem(padding, 32); // 使用您的 mixin 转换 2rem → 32px
-  .rem(margin,32);
   text-align: center;
-  width: 100%;
-}
-
-// 响应式调整
-@media (max-width: @breakpoint-md) {
-  #root {
-    .rem(padding, 16);
-  }
-
-  :root {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: @breakpoint-sm) {
-  #root {
-    .rem(padding, 12);
-  }
-
-  body {
-    min-width: 280px;
-    height: 100%;
-  }
+  width: 100vw;
 }
 
 // 添加一些实用类

@@ -1,0 +1,60 @@
+@import "../../../../common/styles/variables.less";
+
+.LoginContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  column-gap: 20px;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 20px;
+  .bannerImgFrog {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.9;
+    background-color: #fff;
+    border-radius: 12px;
+    padding:0 20px;
+    box-sizing: border-box;
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .LoginContainer {
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    padding: 10px;
+    width: 100%;
+    max-width: 100vw;
+
+    .bannerImgFrog {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.Input {
+  width: 80%;
+}
+
+.FormItem {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.arco-form-label-item > label {
+  white-space: nowrap;
+}

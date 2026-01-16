@@ -1,4 +1,4 @@
-import api from "../../../common/utils/commonFetch";
+import api from "../../../../common/utils/commonFetch";
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 类型定义
