@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { loginApi, LoginRequest, LoginResponse } from '../api/loginApi';
 import { ApiError } from '../../../../common/utils/commonFetch';
 import { setCredentials } from '../../../../common/config/redux/slices/authSlice';
+import { useLoading } from '../../../../common/components/LoadingContext';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 登录 Hook（完全类型安全）
@@ -11,20 +12,19 @@ import { setCredentials } from '../../../../common/config/redux/slices/authSlice
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 interface UseLoginReturn {
-    loading: boolean;
     error: string | null;
     login: (credentials: LoginRequest) => Promise<void>;
 }
 
 export function useLogin(): UseLoginReturn {
-    const [loading, setLoading] = useState(false);
+    const { showLoading, hideLoading } = useLoading();
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const login = async (credentials: LoginRequest) => {
         try {
-            setLoading(true);
+            showLoading()
             setError(null);
 
             // 调用登录 API（完全类型安全）
@@ -57,9 +57,9 @@ export function useLogin(): UseLoginReturn {
                 setError('登录失败，请稍后重试');
             }
         } finally {
-            setLoading(false);
+            hideLoading()
         }
     };
 
-    return { loading, error, login };
+    return { error, login };
 }

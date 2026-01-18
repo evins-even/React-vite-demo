@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logout, setCredentials } from '../config/redux/slices/authSlice';
+import type { RootState } from '../config/redux';
 
 interface UserInfo {
     id: number;
@@ -24,7 +25,13 @@ interface AuthState {
 export function useAuth() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const auth = useSelector((state: { auth: AuthState }) => state.auth);
+    // 使用类型化的 RootState，确保类型安全
+    const auth = useSelector((state: RootState) => state.auth);
+
+    // 添加安全检查，防止 auth 为 undefined
+    if (!auth) {
+        console.error('Redux auth state is undefined. Please check your store configuration.');
+    }
     const [checking, setChecking] = useState(true);
 
     // 检查登录状态
@@ -105,12 +112,13 @@ export function useAuth() {
     /**
      * 判断是否已登录
      */
-    const isAuthenticated = auth.isAuthenticated && !!auth.token;
+    // 添加安全检查，防止 auth 为 undefined 时报错
+    const isAuthenticated = auth?.isAuthenticated && !!auth?.token;
 
     return {
         isAuthenticated,
-        user: auth.user,
-        token: auth.token,
+        user: auth?.user || null,
+        token: auth?.token || null,
         checking, // 是否正在检查登录状态
         checkAuthStatus,
         logout: handleLogout,

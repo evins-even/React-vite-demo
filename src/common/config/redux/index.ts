@@ -8,8 +8,12 @@ import configReducer from "./slices/configSlice";
 const store = configureStore({
     reducer: {
         config: configReducer,
-        Auth: authReducer,
+        auth: authReducer, // 修复：改为小写 auth，与 useAuth.ts 中的访问保持一致
     }
 })
+
+// 导出类型，方便在其他地方使用
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export default store

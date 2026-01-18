@@ -10,7 +10,7 @@ export interface LoginRequest {
     password: string;
 }
 
-// 登录响应数据
+// 登录响应数据（响应拦截器已解包，所以这里是实际使用的数据结构）
 export interface LoginResponse {
     token: string;
     refreshToken?: string;
@@ -55,6 +55,7 @@ export interface UserInfoResponse {
  * @returns 登录成功后的用户信息和 token
  */
 export function loginApi(data: LoginRequest): Promise<LoginResponse> {
+    // ✅ 直接传入解包后的类型（拦截器已解包）
     return api.post<LoginResponse, LoginRequest>("/auth/login", data);
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLoading } from '../../../common/components/LoadingContext';
+import { useLoading } from '../../../../common/components/LoadingContext';
 import '../style/Form.less';
 
 type Props = {};
